@@ -149,9 +149,102 @@ check_sign_again(-100)
 check_sign_again(121)
 check_sign_again(0)
 
+# happy grade 
+puts
+grade = 'A'
+if grade == 'A'
+    puts 'papa is happy'
+else
+    puts 'mama is angry'
+end
 
 
+# coding exercise
+puts
+def is_divisible(num, div1 = 1, div2 = 1)
+    divides1 = num % div1 == 0
+    divides2 = num % div2 == 0
+    divides1 && divides2
+end
 
+puts is_divisible(12, 3, 4) 
+puts is_divisible(100, 2, 5)
+
+
+# greater of 3
+puts
+puts "Enter 3 numbers please: "
+x = gets.chomp.to_i
+y = gets.chomp.to_i
+z = gets.chomp.to_i
+
+if x > y && x > z
+    max = x
+elsif y > z
+    max = y
+else 
+    max = z
+end
+
+puts "The max of #{x}, #{y} and #{z} is #{max}"
+
+# fizzbuzz program
+puts
+puts "Enter your number:"
+num = gets.chomp.to_i
+
+1.upto(num){ |i|
+    print "#{i}: "
+    if i % 3 == 0
+        print "Fizz"
+    end
+    if i % 5 == 0
+        print "Buzz"
+    end
+    puts
+    
+}
+
+# agent vinod
+puts
+def authenticate_agent(agent_code = "", agent_name = "", agent_title = "")
+
+    if agent_code == "007" && agent_name.upcase == "BOND" ||
+            agent_title.upcase == "SA"
+        puts "Access Granted :)"
+    elsif
+        puts "Access Denied !"
+    end
+end
+
+authenticate_agent("007", "Bond", "SA")
+authenticate_agent("007", "Bond", "HR")
+authenticate_agent("009", "Hawking", "SA")
+authenticate_agent("007", "Gosling", "None")
+authenticate_agent("010", "new", "SA")
+authenticate_agent()
+authenticate_agent("007", "bond")
+authenticate_agent("010", "vinod", "sA")
+
+# ternanry operator
+puts
+val = 6 <= 8 ? "Yes it is true" : "No it is false"
+puts val
+
+def food_menu(myfood)
+    case myfood 
+        when "Sushi"
+            "haha, i like it"
+        when "Takashi"
+            "nope, its not so good"
+        when "Monato"
+            "yupp, its so crispy"
+        else
+            "yay, its hunger day"
+    end
+end
+
+myfood("Sushi")
 
 
 
