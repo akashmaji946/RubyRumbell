@@ -318,3 +318,152 @@ p games.sort_by {|k,v| v}
 p games.sort_by {|k,v| v}.reverse
 p games
 puts
+
+
+# key?  and  value? method
+# checks if that key or value exists or not
+# keys cant repeat, values can
+puts
+companies = {
+    tata: "safari",
+    kia: "thar",
+    ford: "F-170",
+    toyota: "fortuner",
+    mahindra: "thar"
+}
+# brackets around key? and value? predicates are optiional, 
+puts
+p companies
+p companies.key? :tata
+p companies.key? :skoda
+puts
+p companies.value? "safari"
+p companies.value? "dicor"
+p companies.value? "thar"
+
+
+# calculate total bill
+puts
+def total_bill(price, tax, tip)
+ total_amount = price + price * tax + price * tip
+end
+# here: order of arguments matter
+puts total_bill(100, 0.18, 0.09)
+
+#IDEA: we can use ruby hash object  instead
+def total_bill_again(bill)
+  total_amount = bill[:price] + bill[:price] * bill[:tax] + bill[:price] * bill[:tip]
+end
+bill = {
+    price: 100, 
+    tax: 0.18,
+    tip: 0.09
+}
+puts total_bill_again(bill)
+puts
+# funny but interesting: we can omit () in func({....})
+# and just call:      func ....
+puts total_bill_again({
+    price: 100, 
+    tax: 0.18,
+    tip: 0.09
+})
+# puts total_bill_again {price: 100, tax: 0.18, tip: 0.09}
+puts total_bill_again( price: 100, tax: 0.18, tip: 0.09 )
+puts total_bill_again price: 100, tax: 0.18, tip: 0.09 
+
+
+
+
+# Ruby has implicit hash parameters, so you could also write
+# def my_method(options = {}) 
+# my_method(:width => 400, :height => 50, :show_border => false)
+
+# and with Ruby 1.9 and new hash syntax it can be
+# my_method( width: 400, height: 50, show_border: false )
+
+
+# delete method on ruby hash
+# takes one paraeter(key) and deletes it from hash(mutation) and return that value
+puts
+companies = {
+    tata: "safari",
+    kia: "thar",
+    ford: "F-170",
+    toyota: "fortuner",
+    mahindra: "thar"
+}
+p companies
+p companies.delete(:mahindra)
+p companies
+
+
+puts
+# WAP to coun the frequency of each word in a string
+puts
+story = "this is a very very strange thing that this is a nice play and a good thing"
+def count_freq(string)
+    words = string.split(" ")
+    count = Hash.new(0)
+    words.each { |word| count[word] += 1 }
+    count
+end
+p count_freq(story)
+
+#merging two hashes using merge
+# merge() doesnt mutate the first hash
+
+hash1 = {
+    a: 12,
+    b: 13,
+    c: 15
+}
+
+hash2 = {
+    c: 17,
+    d: 6,
+    e: 100
+}
+puts
+p hash1.merge(hash2)
+p hash2.merge(hash1)
+
+# in case of common key k oh h1 and h2, 
+# the value v of k of second hash h2 will be used
+# in case of h1.merge(h2)
+# h1 and h2 are not mutated
+
+# for mutation use merge!
+hash1 = {
+    a: 12,
+    b: 13,
+    c: 15
+}
+
+hash2 = {
+    c: 17,
+    d: 6,
+    e: 100
+}
+puts
+p hash1
+p hash1.merge!(hash2)
+p hash1
+
+
+# select and reject on hashes
+myhash = {
+    a: 12,
+    b: 13,
+    c: 15,
+    d: 10,
+    e: 12,
+    f: 17
+}
+puts
+p myhash
+p myhash.select {|k, v| v > 13 }
+p myhash.reject {|k, v| v <= 12 }
+p myhash.select {|k, v| k.to_s > "c"}
+p myhash.select {|k, v| "abcde".include?(k.to_s)}
+
