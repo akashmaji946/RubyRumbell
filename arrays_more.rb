@@ -83,3 +83,21 @@ nums.each_with_index do |v, i|
 end
 puts "The sum is #{sum}"
 
+
+# for loop in ruby
+puts
+lists = ["KCR", "KMP", "SMP", "TNH"]
+for list in lists
+    p list 
+end
+
+# print product of i and v if i > v
+puts
+values = [-1, 3, 1, 3, 45, 6, 5, 6, 10, 9, 9]
+values.each_with_index { |value, index|
+    if index > value
+        puts "Match at #{index}.\
+ The product of #{index} and #{value} is #{index*value}"
+    end
+
+}
