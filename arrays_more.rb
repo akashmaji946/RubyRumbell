@@ -101,3 +101,126 @@ values.each_with_index { |value, index|
     end
 
 }
+
+# while and until loops
+puts
+animals = ["Kangaroo", "Lion", "Tiger", "Leopard", "Bear"]
+i = 0
+while i < animals.length 
+    puts i, animals[i]
+    i += 1
+end
+
+puts
+i = 0
+until i == animals.length
+    puts i, animals[i]
+    i += 1
+end
+
+# reverse an array
+# reverse! modifies inplace
+puts
+ar = ["A", "B", "C", "D", "E"]
+ar.reverse!
+p ar
+
+# adding two arrays
+# using + operator (doesnt modify/returns new array)
+puts
+xs = [11, 23, 34, 56]
+ys = [21, 45, 67, 54]
+p xs
+p xs + ys
+p xs
+
+# using concat() method (modifies/returns first array)
+puts
+xs = [11, 23, 34, 56]
+ys = [21, 45, 67, 54]
+p xs
+p xs.concat(ys)
+p xs
+
+# define a custom concat method:   myconcat()
+puts
+xs = [11, 23, 34, 56]
+ys = [21, 45, 67, 54]
+def myconcat(arr1, arr2) 
+    arr2.each { |elem| arr1 << elem }
+    arr1
+end
+p xs
+p myconcat(xs, ys)
+p xs
+
+# WAP to get max and min in an array
+puts
+def max_min(arr) 
+
+    return [nil, nil] if ( arr.nil? || arr.empty? )
+
+    maxe = arr[0]
+    arr.each { |elem| maxe = elem if elem > maxe }
+
+    mine = arr[0]
+    arr.each { |elem| mine = elem if elem < mine }
+
+    [maxe, mine]
+
+end
+
+def max_min_eff(arr)
+    return [nil, nil] if ( arr.nil? || arr.empty? )
+
+    maxe = mine = arr[0]
+    1.upto(arr.length-1) do |i|
+        if arr[i] > maxe
+            maxe = arr[i]
+        elsif arr[i] < mine
+            mine = arr[i]
+        end
+    end
+    [maxe, mine]
+
+end
+
+elems = [21, 45, 67, 100, 54, 11, 0, 23, 34, 56]
+p elems
+p max_min(elems)
+p max_min_eff(elems)
+
+
+# find_index() and index() methods are same
+puts
+elems = [21, 45, 67, 100, 54, 11, 0, 23, 34, 56]
+p elems.index(max_min(elems).first)
+p elems.find_index(max_min_eff(elems).last)
+
+
+# select and reject methods
+puts
+scores = [21, 45, 67, 100, 54, 11, 0, 23, 34, 56]
+
+p scores.select { |score| score >= 50 }
+p scores.reject { |score| score <= 49 }
+
+# WAP to filter out all palindromes
+puts
+palins = ["level", "racecar", "haha", "malayalam", "savages"]
+def filter_palins(palins) 
+    palins.select do |palin| palin == palin.reverse end
+end
+
+p filter_palins(palins)
+
+# partition() method
+puts
+strs = ["Akash", "Aman", "Boka", "Jonas", "Baras", "Manasu"]
+as, bs = strs.partition{ |str| str.include?("k") }
+p as, bs
+
+
+
+
+
