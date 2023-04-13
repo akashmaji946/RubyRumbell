@@ -217,3 +217,104 @@ p keys_values_pair1(myhash)
 p keys_values_pair2(myhash) 
 p keys_values_pair3(myhash) 
 puts
+
+# more on hashes
+# giving default values to hash
+# only works with [] operator, not fetch()
+puts
+newhash = Hash.new("Not Found")
+newhash.store(:banana, 1.06)
+newhash[:kiwi] = 11.98
+p newhash
+p newhash[:kiwi]
+p newhash.fetch(:banana)
+
+
+# p newhash.fetch(:mango) # still KeyError
+# becoz we need to specify 2nd parameter if key not found
+p newhash[:mango]
+p newhash[:watermelon]
+
+# changing default value of key in hash
+newhash.default = 0
+p newhash[:mango]
+p newhash[:watermelon]
+
+
+# converting hash to array and vice versa
+puts
+games = {
+    :cricket => "MSDhoni",
+    :hockey => "MajorD",
+    :kabaddi => "pata nhi",
+    :football => "Messi"
+}
+p games
+# convert hash to array using:     hash.to_a
+# gives array of size hash.length containing [key, value] as elems
+p games.to_a
+p games.to_a.class
+p games.to_a.flatten
+
+puts
+ar = [[:cricket, "MSDhoni"], 
+[:football, "Messi"], 
+[:hockey, "MajorD"],
+[:kabaddi, "pata nhi"]
+]
+# convert array to hash using:     ar.to_h
+p ar.to_h
+p ar.to_h.class
+
+
+
+#NOTE:
+# key value pairs in hash need not be sorted
+# but ruby internally maintains order
+
+# sorting a hash
+# default: by key
+
+# use sort() 
+# default ascending order
+# doesnt cause mutation
+puts
+games = {
+    :cricket => "MSDhoni",
+    :hockey => "MajorD",
+    :kabaddi => "pata nhi",
+    :football => "Messi"
+}
+
+#asc order of keys
+p games
+# below two are same
+p games.sort
+# p games.sort_by {|k,v| v} #same as above
+p games.to_a.sort
+p games
+
+# desc order of keys
+puts
+p games
+# below two are same
+p games.sort.reverse
+# p games.sort_by {|k,v| v}.reverse #same as above
+p games.to_a.sort.reverse
+p games
+
+
+puts
+games = {
+    :cricket => "MSDhoni",
+    :kabaddi => "pata nhi",
+    :hockey => "MajorD",
+    :football => "Messi"
+}
+p games
+# ascending order
+p games.sort_by {|k,v| v}
+# descending order
+p games.sort_by {|k,v| v}.reverse
+p games
+puts
