@@ -1,4 +1,6 @@
 # this will demonstrate:     load('filename.rb')
+# a file can be loaded any number of times using:   load('filename.rb')
+# it will be executed each time
 
 puts "Hi. Welcome to ABCD Bank"
 
